@@ -53,4 +53,6 @@ def test_mutate():
     t = format_history_as_table(hist)
     print(t)
     assert t[0][0] == "base = ['C', 'A', 'T']"
-    assert t[1][0] == "base = ['B', 'A', 'T']", t
+    assert t[1][0] == "base = ['B', 'A', 'T']"
+    assert t[3][0] == "d = {'a': 'hello'}"
+    assert t[4][0] == "d = {'a': 'world'}"
