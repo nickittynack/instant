@@ -43,6 +43,7 @@ nosetests.xml
 /.pytest_cache
 venv
 
+/.vscode
 .env.yaml
 .DS_Store
 demo_cache.sqlite
