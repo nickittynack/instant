@@ -51,7 +51,6 @@ def test_errortrace():
 def test_mutate():
     hist = trace_code_file("tests/fixtures/mutate.py")
     t = format_history_as_table(hist)
-    print(t)
     assert t[0][0] == "base = ['C', 'A', 'T']"
     assert t[1][0] == "base = ['B', 'A', 'T']"
     assert t[3][0] == "d = {'a': 'hello'}"
