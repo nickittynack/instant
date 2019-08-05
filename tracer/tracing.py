@@ -1,5 +1,6 @@
 import bdb
 import cmd
+import copy
 import inspect
 import os
 import pdb
@@ -68,6 +69,8 @@ class Tracer(pdb.Pdb):
         for k, v in c.items():
             if inspect.ismodule(v) or inspect.isfunction(v) or inspect.isgenerator(v):
                 v = str(v)
+            if isinstance(v, list) or isinstance(v, dict):
+                v = copy.deepcopy(v)
             current_line[k] = v
 
     def trace_dispatch(self, frame, event, arg):
@@ -126,7 +129,7 @@ class Tracer(pdb.Pdb):
 
         self.insert_changes(changes, line_number)
 
-        self._previous = d
+        self._previous = copy.deepcopy(d)
 
     def user_line(self, frame):
         self.set_continue()

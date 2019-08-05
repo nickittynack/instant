@@ -46,3 +46,12 @@ def test_req_cache():
 def test_errortrace():
     hist = trace_code_file("tests/fixtures/exception.py")
     t = format_history_as_table(hist)
+
+
+def test_mutate():
+    hist = trace_code_file("tests/fixtures/mutate.py")
+    t = format_history_as_table(hist)
+    assert t[0][0] == "base = ['C', 'A', 'T']"
+    assert t[1][0] == "base = ['B', 'A', 'T']"
+    assert t[3][0] == "d = {'a': 'hello'}"
+    assert t[4][0] == "d = {'a': 'world'}"
